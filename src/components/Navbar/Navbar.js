@@ -6,7 +6,8 @@ import Tab from '@material-ui/core/Tab';
 import Add from '../Add/Add';
 import Welcome from '../Welcome/Welcome';
 import DataTable from '../DataTable/DataTable'
-import { urls } from "../../util/urlUtils";
+import Edit from '../Edit/Edit';
+import { urls, privateUrls } from "../../util/urlUtils";
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 
 class Navbar extends Component {
@@ -64,6 +65,10 @@ class Navbar extends Component {
                                 path="/data"
                                 exact={true}
                                 render={() => <DataTable />}
+                            />
+                            <Route exact
+                                path={privateUrls.edit.path}
+                                render={(props) => <Edit {...props} />}
                             />
                         </Switch>
                         </React.Fragment>

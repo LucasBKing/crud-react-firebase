@@ -7,6 +7,8 @@ import {Table,
         Button    
 } from "@material-ui/core";
 import FirebaseService from '../../services/FirebaseService';
+import { privateUrls } from '../../util/urlUtils';
+import { Link } from 'react-router-dom';
 
 
 class DataTable extends Component {
@@ -51,6 +53,17 @@ class DataTable extends Component {
                                     <TableCell>{item.data.client}</TableCell>
                                     <TableCell>{item.data.data}</TableCell>
                                     <TableCell>
+                                    
+                                        <Link 
+                                            to={{
+                                                pathname: privateUrls.edit.pathWithouParam + index,
+                                                state: item
+                                            }}
+                                        >
+                                            <Button>
+                                                Edit
+                                            </Button>
+                                        </Link>
                                         <Button onClick={() => this.handleRemove(item.key)}>
                                             Remove
                                         </Button>

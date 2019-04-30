@@ -4,7 +4,7 @@ export default class FirebaseService {
     static getDataList = (nodePath, callback, size=10) => {
         let query = firebaseDatabase.ref(nodePath)
             .limitToLast(size);
-        
+
         query.on('value', datasnapshot => {
             let items= [];
             datasnapshot.forEach(childSnapshot => {
@@ -26,5 +26,9 @@ export default class FirebaseService {
 
     static remove = (nodePath, id) => {
         return firebaseDatabase.ref(nodePath + '/' + id).remove();
+    }
+
+    static updateData = (nodePath, id, data) => {
+        return firebaseDatabase.ref(nodePath + '/' + id).update(data);
     }
 }
