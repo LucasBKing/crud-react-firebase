@@ -1,72 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, withRouter } from 'react-router-dom';
-import { urls } from '../../util/urlUtils';
-import Welcome from '../Welcome/Welcome';
-import Add from '../Add/Add';
-import FirebaseService from '../../services/FirebaseService';
-import DataTable from '../DataTable/DataTable';
+import Navbar from '../Navbar/Navbar';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Card, CardContent } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
+import { lightBlue } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
-    primary: red,
+    primary: {
+      main: '#c5cae9'
+    }
   }
 })
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      data: []
-    };
-  }
-
-  componentDidMount() {
-    FirebaseService.getDataList('leituras', (dataReceived) =>    this.setState({data: dataReceived}))
-  }
-
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <React.Fragment>
           <AppBar position="static">
-            <Toolbar>
+            <Toolbar variant="dense">
               <Typography type="title" color="inherit">
                 APPTITLE
               </Typography>
             </Toolbar>
           </AppBar>
-          <Card style={{margin: '50px'}}>
-            <CardContent>
-
-                <Route exact
-                      path={urls.home.path}
-                      render={(props) => <Welcome {...props}/>}
-                />
-
-                <Route exact
-                      path={urls.data.path}
-                      render={(props) => 
-                          <DataTable {...props} data={this.state.data}/>}
-                />
-
-                <Route exact
-                      path={urls.add.path}
-                      render={(props) => 
-                                <Add {...props}/>}
-                />
-            </CardContent>
-        </Card>
-          <DataTable data={this.state.data}/>
+          <Navbar />
         </React.Fragment>
       </MuiThemeProvider>
     );
   }
 }
 
-export default withRouter(App);
+export default App;
