@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { lightBlue } from '@material-ui/core/colors';
+//import { lightBlue } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {

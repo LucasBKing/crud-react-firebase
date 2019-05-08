@@ -1,7 +1,6 @@
 export const urls = {
     home: {name: 'Home', path:'/', component:'Welcome'},
-    data: {name: 'Data', path:'/data', component: 'DataTable'},
-    add: {name: 'Add', path:'/add', component: 'Add'}
+    login: {name: 'Login', path:'/login', component:'Login'}
 }
 
 export const privateUrls = {
@@ -9,5 +8,7 @@ export const privateUrls = {
         name: 'Edit',
         path:'/edit/:id',
         pathWithouParam:'/edit/'
-    }
+    },
+    data: {name: 'Data', path:'/data', component: 'DataTable'},
+    add: {name: 'Add', path:'/add', component: 'Add'}
 };
